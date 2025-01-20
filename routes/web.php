@@ -19,7 +19,7 @@ use App\Http\Controllers\BlogController;
 
 
 Route::get('/dashboard', function () {
-    return view('pages.home');
+    return view('profile.user');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
@@ -41,9 +41,5 @@ route::get('/newblog',[HomeController::class,'newblog'])->name('newblog');
 route::get('/comment',[HomeController::class,'comment'])->name('comment');
 
 
-
-
-
-
-Route::get('/blog/create', [BlogController::class, 'create'])->name('blog.create');
-Route::post('/blog', [BlogController::class, 'store'])->name('blog.store');
+route::get('/blog/create', [BlogController::class, 'create'])->name('blog.create');
+route::post('/blog', [BlogController::class, 'store'])->name('blog.store');

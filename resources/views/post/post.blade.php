@@ -67,6 +67,9 @@ https://templatemo.com/tm-551-stand-blog
               @if (Route::has('login'))
 
               @auth
+              <li class="nav-item">
+                <a class="nav-link" href="account">Account</a>
+              </li>
 
               <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                 @csrf
