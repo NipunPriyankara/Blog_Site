@@ -3,144 +3,87 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <title>Login | Laravel</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
+        /* Background Image Styling */
         body {
-            font-family: 'Poppins', sans-serif;
-            background: linear-gradient(to bottom right, #1f4037, #99f2c8);
-            color: #fff;
+            background: url('{{ asset('assets/images/01.jpg') }}') no-repeat center center fixed;
+            background-size: cover;
             height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            color: black; /* Default text color set to black */
         }
-
-        .container {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            padding: 2rem;
-            border-radius: 15px;
-            width: 400px;
-            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
-        }
-
-        .container h2 {
-            text-align: center;
-            margin-bottom: 1.5rem;
-            font-weight: 600;
-        }
-
-        .form-group {
-            margin-bottom: 1rem;
-        }
-
-        .form-group label {
-            display: block;
-            font-size: 0.9rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .form-group input {
-            width: 100%;
-            padding: 10px;
+        .card {
+            background: rgba(255, 255, 255, 0.5); /* Increased transparency */
             border: none;
-            border-radius: 5px;
-            font-size: 1rem;
+            border-radius: 10px;
         }
-
-        .form-group input:focus {
-            outline: none;
-            box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+        h3, label, p, a {
+            font-weight: bold; /* Bold text */
+            color: black; /* Black font color */
         }
-
-        .remember-me {
-            display: flex;
-            align-items: center;
-            margin-bottom: 1rem;
-        }
-
-        .remember-me input[type="checkbox"] {
-            margin-right: 10px;
-            accent-color: #fff;
-        }
-
-        .btn {
-            width: 100%;
-            padding: 10px;
-            font-size: 1rem;
-            font-weight: bold;
-            color: #1f4037;
-            background: #fff;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        .btn:hover {
-            background: #f1f1f1;
-        }
-
-        .footer {
-            margin-top: 1rem;
-            text-align: center;
-            font-size: 0.9rem;
-        }
-
-        .footer a {
-            color: #fff;
-            text-decoration: underline;
-        }
-
-        .footer a:hover {
-            color: #e3e3e3;
+        .form-control {
+            color: black; /* Black input text color */
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h2>Welcome Back</h2>
+
+<div class="container vh-100 d-flex justify-content-center align-items-center">
+    <div class="card shadow-sm p-4" style="max-width: 400px; width: 100%;">
+        <h3 class="text-center mb-4">Login</h3>
         <form method="POST" action="{{ route('login') }}">
             @csrf
 
-            <!-- Email -->
-            <div class="form-group">
-                <label for="email">Email Address</label>
-                <input type="email" id="email" name="email" value="{{ old('email') }}" required autofocus placeholder="Enter your email">
+            <!-- Email Address -->
+            <div class="mb-3">
+                <label for="email" class="form-label">Email Address</label>
+                <input type="email" name="email" id="email"
+                       class="form-control @error('email') is-invalid @enderror"
+                       value="{{ old('email') }}" required autofocus>
                 @error('email')
-                    <span class="text-danger" style="color: #ffcccc;">{{ $message }}</span>
+                    <div class="invalid-feedback">{{ $message }}</div>
                 @enderror
             </div>
 
             <!-- Password -->
-            <div class="form-group">
-                <label for="password">Password</label>
-                <input type="password" id="password" name="password" required placeholder="Enter your password">
+            <div class="mb-3">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" name="password" id="password"
+                       class="form-control @error('password') is-invalid @enderror"
+                       required>
                 @error('password')
-                    <span class="text-danger" style="color: #ffcccc;">{{ $message }}</span>
+                    <div class="invalid-feedback">{{ $message }}</div>
                 @enderror
             </div>
 
-            <!-- Remember Me -->
-            <div class="remember-me">
-                <input type="checkbox" id="remember" name="remember">
-                <label for="remember">Remember Me</label>
+            <!-- Remember Me & Forgot Password in Same Row -->
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <!-- Remember Me -->
+                <div class="form-check">
+                    <input type="checkbox" name="remember" id="remember" class="form-check-input">
+                    <label for="remember" class="form-check-label">Remember Me</label>
+                </div>
+                <!-- Forgot Password -->
+                <div>
+                    <a href="{{ route('password.request') }}" class="text-decoration-none">Forgot Password?</a>
+                </div>
             </div>
 
             <!-- Submit Button -->
-            <button type="submit" class="btn">Login</button>
+            <div class="d-grid">
+                <button type="submit" class="btn btn-primary">Login</button>
+            </div>
         </form>
 
-        <div class="footer">
-            Don't have an account? <a href="{{ route('register') }}">Register</a>
+        <div class="mt-4 text-center">
+            <p class="mb-0">Don't have an account? <a href="{{ route('register') }}">Register</a></p>
         </div>
     </div>
+</div>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

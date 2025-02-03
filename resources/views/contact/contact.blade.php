@@ -16,14 +16,14 @@
         </div>
       </section>
     </div>
-    
+
     <!-- Banner Ends Here -->
 
 
     <section class="contact-us">
       <div class="container">
         <div class="row">
-        
+
           <div class="col-lg-12">
             <div class="down-contact">
               <div class="row">
@@ -73,7 +73,7 @@
                     <div class="content">
                       <ul>
                         <li>
-                          <h5>090-484-8080</h5>
+                          <h5>0777444777</h5>
                           <span>PHONE NUMBER</span>
                         </li>
                         <li>
@@ -81,8 +81,8 @@
                           <span>EMAIL ADDRESS</span>
                         </li>
                         <li>
-                          <h5>123 Aenean id posuere dui, 
-                          	<br>Praesent laoreet 10660</h5>
+                          <h5>No 124, 1st Lane,
+                          	<br>Colombo Sri Lanka</h5>
                           <span>STREET ADDRESS</span>
                         </li>
                       </ul>
@@ -92,13 +92,13 @@
               </div>
             </div>
           </div>
-          
+
           <div class="col-lg-12">
             <div id="map">
               <iframe src="https://maps.google.com/maps?q=Av.+L%C3%BAcio+Costa,+Rio+de+Janeiro+-+RJ,+Brazil&t=&z=13&ie=UTF8&iwloc=&output=embed" width="100%" height="450px" frameborder="0" style="border:0" allowfullscreen></iframe>
             </div>
           </div>
-          
+
         </div>
       </div>
     </section>

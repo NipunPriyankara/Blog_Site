@@ -3,162 +3,125 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <title>Register | Laravel</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
+        /* Background Image Styling */
         body {
-            font-family: 'Poppins', sans-serif;
-            background: linear-gradient(to bottom right, #1f4037, #99f2c8);
-            color: #fff;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            background: url('{{ asset('assets/images/02.jpg') }}') no-repeat center center fixed;
+            background-size: cover;
+            height: 90vh;
+            color: black; /* Default text color set to black */
         }
-
-        .container {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            padding: 2rem;
-            border-radius: 15px;
-            width: 400px;
-            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
-        }
-
-        .container h2 {
-            text-align: center;
-            margin-bottom: 1.5rem;
-            font-weight: 600;
-        }
-
-        .form-group {
-            margin-bottom: 1rem;
-        }
-
-        .form-group label {
-            display: block;
-            font-size: 0.9rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .form-group input {
-            width: 100%;
-            padding: 10px;
+        .card {
+            background: rgba(255, 255, 255, 0.644); /* Increased transparency */
             border: none;
-            border-radius: 5px;
-            font-size: 1rem;
+            border-radius: 10px;
+            margin: 10px; /* Reduced margin */
+            padding: 50px;
+            max-width: 500px; /* Adjusted size */
         }
-
-        .form-group input:focus {
-            outline: none;
-            box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
-        }
-
-        .btn {
-            width: 100%;
-            padding: 10px;
-            font-size: 1rem;
+        h3, label, p, a { 
+             
+            color: black; /* Black font color */
             font-weight: bold;
-            color: #000000;
-            background: #fff;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: all 0.3s;
         }
-
-        .btn:hover {
-            background: #f1f1f1;
-        }
-
-        .footer {
-            margin-top: 1rem;
-            text-align: center;
-            font-size: 0.9rem;
-        }
-
-        .footer a {
-            color: #fff;
-            text-decoration: underline;
-        }
-
-        .footer a:hover {
-            color: #e3e3e3;
+        .form-control {
+        
+            color: black; /* Black input text color */
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h2>Create an Account</h2>
+
+<div class="container vh-100 d-flex justify-content-center align-items-center">
+    <div class="card shadow-sm p-4" style="width: 100%;">
+        <h3 class="text-center mb-4">Create an Account</h3>
         <form method="POST" action="{{ route('register') }}">
             @csrf
-            <!-- Name -->
-            <div class="form-group">
-                <label for="name">Full Name</label>
-                <input type="text" id="name" name="name" value="{{ old('name') }}" required autofocus placeholder="Enter your name">
+
+            <!-- Full Name -->
+            <div class="mb-3">
+                <label for="name" class="form-label">Full Name</label>
+                <input type="text" id="name" name="name" 
+                       class="form-control @error('name') is-invalid @enderror" 
+                       value="{{ old('name') }}" required autofocus placeholder="Enter your name">
                 @error('name')
-                    <span class="text-danger" style="color: #ffcccc;">{{ $message }}</span>
+                    <div class="invalid-feedback">{{ $message }}</div>
                 @enderror
             </div>
 
-            <!-- Email -->
-            <div class="form-group">
-                <label for="email">Email Address</label>
-                <input type="email" id="email" name="email" value="{{ old('email') }}" required placeholder="Enter your email">
+            <!-- Email Address -->
+            <div class="mb-3">
+                <label for="email" class="form-label">Email Address</label>
+                <input type="email" id="email" name="email" 
+                       class="form-control @error('email') is-invalid @enderror" 
+                       value="{{ old('email') }}" required placeholder="Enter your email">
                 @error('email')
-                    <span class="text-danger" style="color: #ffcccc;">{{ $message }}</span>
+                    <div class="invalid-feedback">{{ $message }}</div>
                 @enderror
             </div>
 
-            <!-- Phone -->
-            <div class="form-group">
-                <label for="phone">Phone</label>
-                <input type="phone" id="phone" name="phone" value="{{ old('phone') }}" required autofocus placeholder="Enter your phone number">
-                @error('phone')
-                    <span class="text-danger" style="color: #ffcccc;">{{ $message }}</span>
-                @enderror
-            </div>
+            <!-- Phone and Address in One Row -->
+<div class="row mb-3">
+    <!-- Phone -->
+    <div class="col-md-6">
+        <label for="phone" class="form-label">Phone</label>
+        <input type="text" id="phone" name="phone" 
+               class="form-control @error('phone') is-invalid @enderror" 
+               value="{{ old('phone') }}" required placeholder="Enter your phone number">
+        @error('phone')
+            <div class="invalid-feedback">{{ $message }}</div>
+        @enderror
+    </div>
 
+    <!-- Address -->
+    <div class="col-md-6">
+        <label for="address" class="form-label">Address</label>
+        <input type="text" id="address" name="address" 
+               class="form-control @error('address') is-invalid @enderror" 
+               value="{{ old('address') }}" required placeholder="Enter your address">
+        @error('address')
+            <div class="invalid-feedback">{{ $message }}</div>
+        @enderror
+    </div>
+</div>
 
-            <!-- Address -->
-            <div class="form-group">
-                <label for="address">Address</label>
-                <input type="address" id="address" name="address" value="{{ old('address') }}" required autofocus placeholder="Enter your address">
-                @error('address')
-                    <span class="text-danger" style="color: #ffcccc;">{{ $message }}</span>
-                @enderror
-            </div>
-
-            
 
             <!-- Password -->
-            <div class="form-group">
-                <label for="password">Password</label>
-                <input type="password" id="password" name="password" required placeholder="Create a password">
+            <div class="mb-3">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" id="password" name="password" 
+                       class="form-control @error('password') is-invalid @enderror" 
+                       required placeholder="Create a password">
                 @error('password')
-                    <span class="text-danger" style="color: #ffcccc;">{{ $message }}</span>
+                    <div class="invalid-feedback">{{ $message }}</div>
                 @enderror
             </div>
 
             <!-- Confirm Password -->
-            <div class="form-group">
-                <label for="password_confirmation">Confirm Password</label>
-                <input type="password" id="password_confirmation" name="password_confirmation" required placeholder="Confirm your password">
+            <div class="mb-3">
+                <label for="password_confirmation" class="form-label">Confirm Password</label>
+                <input type="password" id="password_confirmation" name="password_confirmation" 
+                       class="form-control" required placeholder="Confirm your password">
             </div>
 
             <!-- Submit Button -->
-            <button type="submit" class="btn">Register</button>
+            <div class="d-grid">
+                <button type="submit" class="btn btn-primary">Register</button>
+            </div>
         </form>
 
-        <div class="footer">
-            Already have an account? <a href="{{ route('login') }}">Login</a>
+        <div class="mt-4 text-center">
+            <p class="mb-0">Already have an account? <a href="{{ route('login') }}">Login</a></p>
         </div>
     </div>
+</div>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
+
+

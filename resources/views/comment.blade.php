@@ -6,33 +6,9 @@
     <title>Blog Comments and Replies</title>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <link rel="stylesheet" href="{{ asset('/asset/css/comment.css') }}">
     <style>
-        body {
-            background-color: #4f5554;
-            padding: 20px;
-        }
-        .comment-section {
-            background-color: #cfeee1;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(224, 212, 212, 0.1);
-            margin-bottom: 20px;
-        }
-        .comment {
-            margin-bottom: 20px;
-        }
-        .reply {
-            margin-left: 40px;
-            margin-top: 10px;
-        }
-        .btn-primary {
-            background-color: #007bff;
-            border-color: #007bff;
-        }
-        .btn-primary:hover {
-            background-color: #0056b3;
-            border-color: #0056b3;
-        }
     </style>
 </head>
 <body>

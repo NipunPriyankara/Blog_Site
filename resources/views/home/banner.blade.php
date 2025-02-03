@@ -1,14 +1,16 @@
+
+
 <div class="main-banner header-text">
     <div class="container-fluid">
       <div class="owl-banner owl-carousel">
         <div class="item">
-          <img src="assets/images/banner-item-01.jpg" alt="">
+          <img src="assets/images/06.jpg" alt="">
           <div class="item-content">
             <div class="main-content">
               <div class="meta-category">
-                <span>Fashion</span>
+                <span></span>
               </div>
-              <a href="post-details.html"><h4>Morbi dapibus condimentum</h4></a>
+              <a href=""><h4>Waterfall Sri Lanka</h4></a>
               <ul class="post-info">
                 <li><a href="#">Admin</a></li>
                 <li><a href="#">May 12, 2024</a></li>
@@ -18,13 +20,13 @@
           </div>
         </div>
         <div class="item">
-          <img src="assets/images/banner-item-02.jpg" alt="">
+          <img src="assets/images/03.jpg" alt="">
           <div class="item-content">
             <div class="main-content">
               <div class="meta-category">
-                <span>Nature</span>
+                <span></span>
               </div>
-              <a href="post-details.html"><h4>Donec porttitor augue at velit</h4></a>
+              <a href=""><h4>Nature Photography Sri Lanka</h4></a>
               <ul class="post-info">
                 <li><a href="#">Admin</a></li>
                 <li><a href="#">May 14, 2024</a></li>
@@ -34,13 +36,13 @@
           </div>
         </div>
         <div class="item">
-          <img src="assets/images/banner-item-03.jpg" alt="">
+          <img src="assets/images/04.jpg" alt="">
           <div class="item-content">
             <div class="main-content">
               <div class="meta-category">
-                <span>Lifestyle</span>
+                <span></span>
               </div>
-              <a href="post-details.html"><h4>Best HTML Templates on TemplateMo</h4></a>
+              <a href=""><h4>Wild animal Sri Lanka</h4></a>
               <ul class="post-info">
                 <li><a href="#">Admin</a></li>
                 <li><a href="#">May 16, 2024</a></li>
@@ -50,13 +52,13 @@
           </div>
         </div>
         <div class="item">
-          <img src="assets/images/banner-item-04.jpg" alt="">
+          <img src="assets/images/05.jpg" alt="">
           <div class="item-content">
             <div class="main-content">
               <div class="meta-category">
-                <span>Fashion</span>
+                <span></span>
               </div>
-              <a href="post-details.html"><h4>Responsive and Mobile Ready Layouts</h4></a>
+              <a href=""><h4>Birds in Sri Lanka</h4></a>
               <ul class="post-info">
                 <li><a href="#">Admin</a></li>
                 <li><a href="#">May 18, 2024</a></li>
@@ -66,13 +68,13 @@
           </div>
         </div>
         <div class="item">
-          <img src="assets/images/banner-item-05.jpg" alt="">
+          <img src="assets/images/07.jpg" alt="">
           <div class="item-content">
             <div class="main-content">
               <div class="meta-category">
-                <span>Nature</span>
+                <span></span>
               </div>
-              <a href="post-details.html"><h4>Cras congue sed augue id ullamcorper</h4></a>
+              <a href=""><h4>Bay in Sri Lanka</h4></a>
               <ul class="post-info">
                 <li><a href="#">Admin</a></li>
                 <li><a href="#">May 24, 2024</a></li>
@@ -82,13 +84,13 @@
           </div>
         </div>
         <div class="item">
-          <img src="assets/images/banner-item-06.jpg" alt="">
+          <img src="assets/images/08.jpg" alt="">
           <div class="item-content">
             <div class="main-content">
               <div class="meta-category">
-                <span>Lifestyle</span>
+                <span></span>
               </div>
-              <a href="post-details.html"><h4>Suspendisse nec aliquet ligula</h4></a>
+              <a href="post-details.html"><h4>Beach in Sri Lanka</h4></a>
               <ul class="post-info">
                 <li><a href="#">Admin</a></li>
                 <li><a href="#">May 26, 2024</a></li>

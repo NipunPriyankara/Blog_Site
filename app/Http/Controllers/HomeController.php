@@ -3,17 +3,17 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Post;
+use App\Models\User;
 
 class HomeController extends Controller
 {
-    public function index()
-    {
-        return view('admin.index');
-    }
 
     public function home()
     {
-        return view('home.home');
+        $post = Post::all();
+        return view('home.home',compact('post'));
+
     }
 
     public function about()
@@ -22,40 +22,53 @@ class HomeController extends Controller
     }
 
     public function post()
-    {
-        return view('post.post');
+    {$post = Post::all();
+        return view('post.post',compact('post'));
+
     }
 
     public function contact()
     {
+
         return view('contact.contact');
+
     }
 
     public function account()
     {
         return view('profile.user');
-        
+
     }
 
-    public function profile()
+//////....................user.........................
+public function profile()
     {
-
-            return view('profile.profile');
-        
+        $user = User::all();
+        return view('user.userprofile',compact('user'));
     }
+    public function updateuprofile()
 
-    public function newblog ()
     {
-        return view('blog');
-        
+        $user = User::all();
+        return view('profile.user',compact('user'));
     }
 
-    public function comment ()
+    public function uallpost()
     {
-        return view('comment');
-        
+        $post = Post::all();
+        return view('user.uallpost',compact('post'));
     }
 
+    public function unewpost()
+    {
+        return view('user.unewpost');
+    }
+
+    public function ueditpost($id){
+
+        $post=Post::find($id);
+        return view('user.ueditpost' , compact('post'));
+    }
 
 
 }

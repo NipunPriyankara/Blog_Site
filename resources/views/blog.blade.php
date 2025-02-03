@@ -39,6 +39,11 @@
             color: #333333;
             font-weight: 500;
         }
+        .form-group img {
+            max-width: 100%;
+            height: auto;
+            margin-top: 10px;
+        }
     </style>
 </head>
 <body>
@@ -57,7 +62,7 @@
         @endif
 
         <!-- Blog creation form -->
-        <form action="{{ route('blog.store') }}" method="POST">
+        <form action="{{ route('blog.store') }}" method="POST" enctype="multipart/form-data">
             @csrf <!-- CSRF Token for security -->
             
             <div class="mb-3">
@@ -78,6 +83,12 @@
             <div class="mb-3">
                 <label for="tags" class="form-label">Tags</label>
                 <input type="text" class="form-control" id="tags" name="tags" placeholder="Enter tags separated by commas">
+            </div>
+
+            <!-- Image Upload Section -->
+            <div class="mb-3">
+                <label for="image" class="form-label">Upload Image</label>
+                <input type="file" class="form-control" id="image" name="image" accept="image/*">
             </div>
             
             <button type="submit" class="btn btn-primary w-100">Submit Blog</button>

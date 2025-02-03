@@ -1,184 +1,126 @@
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Profile</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+@include('admin.header')
 
-        body {
-            font-family: 'Poppins', sans-serif;
-            background: linear-gradient(to bottom right, #1f4037, #99f2c8);
-            color: #fff;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 2rem;
-        }
+<style type="text/css">
+/* General Styles */
+.post_title {
+    font-size: 30px;
+    font-weight: bold;
+    text-align: center;
+    padding: 30px;
+    color: #ffffff;
+}
 
-        .container {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            padding: 2rem;
-            border-radius: 15px;
-            width: 400px;
-            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
-            text-align: center;
-        }
+.div_center {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    justify-content: flex-start; /* Align items to the left */
+    gap: 20px; /* Add space between label and input fields */
+}
 
-        .avatar {
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            background: #fff;
-            margin: 0 auto 1rem;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 2rem;
-            color: #4e54c8;
-            font-weight: bold;
-        }
+label {
+    display: inline-block;
+    width: 200px; /* Reduced width for better alignment */
+    font-size: 16px;
+    text-align: left;
+}
 
-        h2 {
-            margin-bottom: 1rem;
-            font-weight: 600;
-        }
+input[type="text"],
+textarea,
+input[type="file"] {
+    width: 300px; /* Adjust input width */
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+}
 
-        p {
-            font-size: 0.9rem;
-            margin-bottom: 1rem;
-            color: #e3e3e3;
-        }
+textarea {
+    height: 100px; /* Adjust height for text areas */
+    resize: none;
+}
 
-        .form-group {
-            margin-bottom: 1rem;
-            text-align: left;
-        }
+input[type="submit"] {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
 
-        .form-group label {
-            display: block;
-            font-size: 0.9rem;
-            margin-bottom: 0.5rem;
-        }
+input[type="submit"]:hover {
+    background-color: #0056b3;
+}
 
-        .form-group input {
-            width: 100%;
-            padding: 10px;
-            border: none;
-            border-radius: 5px;
-            font-size: 1rem;
-        }
+/* Page Content Styling */
+.page-content {
+    padding: 20px;
+    background-color: #300f55;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+</style>
 
-        .form-group input:focus {
-            outline: none;
-            box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
-        }
+@include('admin.sidebar')
 
-        .btn {
-            width: 100%;
-            padding: 10px;
-            font-size: 1rem;
-            font-weight: bold;
-            color: #4ec88f;
-            background: #fff;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: all 0.3s;
-            margin-top: 1rem;
-        }
-
-        .btn:hover {
-            background: #f1f1f1;
-        }
-
-        .link {
-            margin-top: 1rem;
-            text-align: center;
-        }
-
-        .link a {
-            color: #fff;
-            text-decoration: underline;
-        }
-
-        .link a:hover {
-            color: #d3d3d3;
-        }
-
-        footer {
-            margin-top: 2rem;
-            text-align: center;
-            font-size: 0.9rem;
-        }
-
-        footer a {
-            color: #fff;
-            text-decoration: underline;
-        }
-
-        footer a:hover {
-            color: #e3e3e3;
-        }
-    </style>
-</head>
-<body>
-    <!-- Profile Container -->
-    <div class="container">
-        <!-- User Avatar -->
-        <div class="avatar">
-            {{ strtoupper(substr(auth()->user()->name, 0, 1)) }}
+<div class="content">
+    <div class="container-fluid">
+        @if(session()->has('message'))
+        <div class="alert alert-success">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">x</button>
+            {{ session()->get('message') }}
         </div>
-
-        <!-- User Info -->
-        <h2>{{ auth()->user()->name }}</h2>
-        <p>Email: {{ auth()->user()->email }}</p>
-        <p>Phone: {{ auth()->user()->phone ?? 'Not provided' }}</p>
-        <p>Address: {{ auth()->user()->address ?? 'Not provided' }}</p>
-
-        <!-- Update Profile Form -->
-        <form method="POST" action="{{ route('profile.update') }}">
-            @csrf
-            @method('PUT')
-            <div class="form-group">
-                <label for="name">Full Name</label>
-                <input type="text" id="name" name="name" value="{{ auth()->user()->name }}" required>
+    @endif
+        <div class="card">
+            <div class="card-header card-header-primary">
+                <h4 class="card-title">Update Usertype</h4>
+                <p class="card-category">Created using Roboto Font Family</p>
             </div>
+            <div class="card-body">
+                <div id="typography">
 
-            <div class="form-group">
-                <label for="email">Email Address</label>
-                <input type="email" id="email" name="email" value="{{ auth()->user()->email }}" required>
+                    <div class="row">
+                        <div class="tim-typo">
+
+                            <div>
+                                @foreach($user as $user)
+                    @if(Auth::user()->name == $user->name)
+                                <form action="{{url('profileupdate',$user->id)}}" method="POST" enctype="multipart/form-data">
+                                    @csrf
+
+                                    <div class="div_center">
+                                        <label for="post-title">Name</label>
+                                        <input type="text" id="post-title" name="name" value="{{$user->name}}">
+                                    </div>
+
+                                    <div class="div_center">
+                                        <label for="post-title">Email</label>
+                                        <input type="text" id="post-title" name="email" value="{{$user->email}}">
+                                    </div>
+                                    <div class="div_center">
+                                        <label for="post-title">Phone</label>
+                                        <input type="text" id="post-title" name="phone" value="{{$user->phone}}">
+                                    </div>
+                                    <div class="div_center">
+                                        <label for="post-title">Address</label>
+                                        <input type="text" id="post-title" name="address" value="{{$user->address}}">
+                                    </div>
+                                    <div class="div_center">
+                                        <input type="submit" class="btn btn-primary" value="Submit">
+                                    </div>
+                                </form>
+                                @endif
+                                @endforeach
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-
-            <div class="form-group">
-                <label for="phone">Phone</label>
-                <input type="text" id="phone" name="phone" value="{{ auth()->user()->phone }}">
-            </div>
-
-            <div class="form-group">
-                <label for="address">Address</label>
-                <input type="text" id="address" name="address" value="{{ auth()->user()->address }}">
-            </div>
-
-            <button type="submit" class="btn">Update Profile</button>
-        </form>
-
-        <!-- Additional Links -->
-        <div class="link">
-            <a href="{{ route('dashboard') }}">Go to Dashboard</a>
         </div>
     </div>
+</div>
 
-    <!-- Footer -->
-    <footer>
-        &copy; {{ date('Y') }} My Profile. All rights reserved.
-    </footer>
-</body>
-</html>
+@include('admin.footer')

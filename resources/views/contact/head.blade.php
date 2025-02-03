@@ -34,7 +34,7 @@ https://templatemo.com/tm-551-stand-blog
         <div></div>
         <div></div>
     </div>
-</div>  
+</div>
 <!-- ***** Preloader End ***** -->
 
 <!-- Header -->
@@ -51,23 +51,30 @@ https://templatemo.com/tm-551-stand-blog
             <a class="nav-link" href="/">Home
               <span class="sr-only">(current)</span>
             </a>
-          </li> 
-          <li class="nav-item">
-            <a class="nav-link" href="about">About</a>
           </li>
           <li class="nav-item ">
             <a class="nav-link" href="post">Blog</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href="about">About</a>
+          </li>
+
           <li class="nav-item active">
             <a class="nav-link" href="contact">Contact</a>
           </li>
           @if (Route::has('login'))
 
           @auth
-          
+
+          @if (Auth::user()->usertype == 'admin')
+          <!-- Content for admin -->
           <li class="nav-item">
-            <a class="nav-link" href="account">Account</a>
-          </li>
+              <a class="nav-link" href="admin/dashboard">ADMIN PANEL</a>
+      @else
+          <!-- Content for regular user -->
+          <li class="nav-item">
+              <a class="nav-link" href="profile">USER</a>
+      @endif
 
           <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
             @csrf
@@ -87,8 +94,8 @@ https://templatemo.com/tm-551-stand-blog
           <li class="nav-item">
             <a class="nav-link" href="{{ route('register') }}">Register</a>
           </li>
-         
-          
+
+
         @endauth
         @endif
         </ul>
